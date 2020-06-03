@@ -29,14 +29,12 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<div>
-					<p>
-						Ferry Price: <Price price={25}></Price>
-					</p>
-				</div>
+			<main>
+				<p>
+					Ferry Price: <Price price={25}></Price>
+				</p>
 
-				<div>
+				<div className="item-picker">
 					<h3>Corn</h3>
 					<p id="bags-of-corn">Bags of corn: {this.state.bagsOfCorn}</p>
 					<button id="corn-plus-one" onClick={() => this.onChangeCornQuantity(1)}>+</button>
@@ -45,7 +43,7 @@ class App extends React.Component {
 					<button onClick={() => this.onChangeCornQuantity(-1)}>-</button>
 				</div>
 
-				<div>
+				<div className="item-picker">
 					<h3>Geese</h3>
 					<p id="geese">Geese: {this.state.geese}</p>
 					<button id="goose-plus-one" onClick={() => this.onChangeGeeseQuantity(1)}>+</button>
@@ -53,12 +51,13 @@ class App extends React.Component {
 					<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
 					<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
 				</div>
+
 				{(this.state.geese <= 1 || this.state.bagsOfCorn <= 1) && <div id="total">
 					Price for ferry: <Price price={this.state.total}></Price>
 				</div>}
 
-				{this.state.geese > 1 && this.state.bagsOfCorn > 1 && <div>CANNOT DO FERRY TRIP</div>}
-			</div>
+				{this.state.geese > 1 && this.state.bagsOfCorn > 1 && <div className="error">CANNOT DO FERRY TRIP</div>}
+			</main>
 		);
 	}
 }
