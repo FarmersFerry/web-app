@@ -17,16 +17,22 @@ class App extends React.Component {
 		let bagsOfCorn = this.state.bagsOfCorn + number;
 		if (bagsOfCorn < 0) bagsOfCorn = 0;
 
-		this.setState({ bagsOfCorn, total: Transporter.getTotalPrice(this.priceOfFerry, this.state.geese, bagsOfCorn) });
-		this.setState({showError: !Transporter.canTravel(this.state.geese, bagsOfCorn)});
+		this.setState({
+			bagsOfCorn,
+			total: Transporter.getTotalPrice(this.priceOfFerry, this.state.geese, bagsOfCorn),
+			showError: !Transporter.canTravel(this.state.geese, bagsOfCorn)
+		});
 	}
 
 	onChangeGeeseQuantity(number) {
 		let geese = this.state.geese + number;
 		if (geese < 0) geese = 0;
 
-		this.setState({ geese, total: Transporter.getTotalPrice(this.priceOfFerry, geese, this.state.bagsOfCorn) });
-		this.setState({showError: !Transporter.canTravel(geese, this.state.bagsOfCorn)});
+		this.setState({
+			geese,
+			total: Transporter.getTotalPrice(this.priceOfFerry, geese, this.state.bagsOfCorn),
+			showError: !Transporter.canTravel(geese, this.state.bagsOfCorn)
+		});
 	}
 
 	render() {
@@ -55,7 +61,7 @@ class App extends React.Component {
 					<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
 				</div>
 
-				{(this.state.geese <= 1 || this.state.bagsOfCorn <= 1) && <div id="total">
+				{!this.state.showError && <div id="total">
 					Price for ferry: <Price price={this.state.total}></Price>
 				</div>}
 
