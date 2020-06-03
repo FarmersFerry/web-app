@@ -54,7 +54,6 @@ class App extends React.Component {
 					<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
 				</div>
 				{(this.state.geese <= 1 || this.state.bagsOfCorn <= 1) && <div id="total">
-					{console.log(this.state.total)}
 					Price for ferry: <Price price={this.state.total}></Price>
 				</div>}
 
