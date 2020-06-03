@@ -34,12 +34,11 @@ class App extends React.Component {
 					<p>
 						Ferry Price: <Price price={25}></Price>
 					</p>
-					<p id="bags-of-corn">Bags of corn: {this.state.bagsOfCorn}</p>
-					<p id="geese">Geese: {this.state.geese}</p>
 				</div>
 
 				<div>
 					<h3>Corn</h3>
+					<p id="bags-of-corn">Bags of corn: {this.state.bagsOfCorn}</p>
 					<button id="corn-plus-one" onClick={() => this.onChangeCornQuantity(1)}>+</button>
 					<button onClick={() => this.onChangeCornQuantity(10)}>+10</button>
 					<button onClick={() => this.onChangeCornQuantity(-10)}>-10</button>
@@ -48,6 +47,7 @@ class App extends React.Component {
 
 				<div>
 					<h3>Geese</h3>
+					<p id="geese">Geese: {this.state.geese}</p>
 					<button id="goose-plus-one" onClick={() => this.onChangeGeeseQuantity(1)}>+</button>
 					<button onClick={() => this.onChangeGeeseQuantity(10)}>+10</button>
 					<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
