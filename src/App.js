@@ -18,7 +18,7 @@ class App extends React.Component {
 		if (bagsOfCorn < 0) bagsOfCorn = 0;
 
 		this.setState({ bagsOfCorn, total: Transporter.getTotalPrice(this.priceOfFerry, this.state.geese, bagsOfCorn) });
-		this.setState({showError: !Transporter.canTravel(this.state.geese, this.state.bagsOfCorn)});
+		this.setState({showError: !Transporter.canTravel(this.state.geese, bagsOfCorn)});
 	}
 
 	onChangeGeeseQuantity(number) {
@@ -26,7 +26,7 @@ class App extends React.Component {
 		if (geese < 0) geese = 0;
 
 		this.setState({ geese, total: Transporter.getTotalPrice(this.priceOfFerry, geese, this.state.bagsOfCorn) });
-		this.setState({showError: !Transporter.canTravel(this.state.geese, this.state.bagsOfCorn)});
+		this.setState({showError: !Transporter.canTravel(geese, this.state.bagsOfCorn)});
 	}
 
 	render() {

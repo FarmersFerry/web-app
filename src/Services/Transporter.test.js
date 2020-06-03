@@ -29,6 +29,13 @@ it("canTravel is false when 1 geese and 1 corn", () => {
     });
 });
 
+it("canTravel is false when 11 geese and 1 corn", () => {    
+    act(() => {
+        const can = transporter.canTravel(11, 1); 
+        expect(can).toBe(false);
+    });
+});
+
 it("getTotalPrice is 0 when 0 geese and 0 corn", () => {    
     act(() => {
         const can = transporter.getTotalPrice(0, 0, 0); 
