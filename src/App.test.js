@@ -21,11 +21,10 @@ it("displays starting total to be £0.00", () => {
 		render(<App />, container);
 	});
 	const totalDiv = document.querySelector("#total");
-	expect(totalDiv.innerHTML).toBe("Price for ferry:;
-	expect(totalDiv.innerHTML).toBe("Price for ferry: <span>£0.20</span>");
+	expect(totalDiv.innerHTML).toBe("Price for ferry: <span>£0.00</span>");
+});
 
-
-it("displays starting total to be £0.00", () => {
+it("displays starting total to be £0.25", () => {
 	act(() => {
 		render(<App />, container);
 	});
