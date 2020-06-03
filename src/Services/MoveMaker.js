@@ -1,10 +1,10 @@
 const buildMoves = (geese, corn) => {
 
-    if (geese === 1 && corn == 2) {
+    if (geese === 1 && corn === 2) {
         return getCaseOne('goose', 'corn');
     }
 
-    if (geese === 2 && corn == 1) {
+    if (geese === 2 && corn === 1) {
         return getCaseOne('corn', 'goose');
     }
 
