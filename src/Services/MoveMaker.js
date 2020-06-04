@@ -8,11 +8,11 @@ const buildMoves = (geese, corn) => {
         return getCaseOne('corn', 'goose');
     }
 
-    if (geese > 2 && corn === 0) {
+    if (geese > 0 && corn === 0) {
         return getCaseTwo(geese, 'geese');
     }
 
-    if (geese === 0 && corn > 2) {
+    if (geese === 0 && corn > 0) {
         return getCaseTwo(corn, 'corn');
     }
 

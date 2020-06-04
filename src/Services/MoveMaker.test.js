@@ -1,6 +1,13 @@
 import { act } from "react-dom/test-utils";
 import moveMaker from "./MoveMaker";
 
+it("buildMoves returns 1 moves when 1 geese and 0 corn", () => {
+    act(() => {
+        let moves = moveMaker.buildMoves(1, 0);
+        expect(moves.length).toBe(1);
+    });
+});
+
 it("buildMoves returns 7 moves when 1 geese and 2 corn", () => {
     act(() => {
         let moves = moveMaker.buildMoves(1, 2);
