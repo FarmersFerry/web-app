@@ -79,9 +79,6 @@ class App extends React.Component {
 		return (
 			<main>
 				<h1>Ferry Trip Calculator</h1>
-				<p>
-					Ferry Price: <Price price={this.priceOfFerry}></Price>
-				</p>
 
 				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount)=>this.onChangeCornQuantity(amount)} />
 				<ItemPicker name="Geese" quantity={this.state.geese} quantityLabel="Geese" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
@@ -104,6 +101,9 @@ class App extends React.Component {
 						CANNOT DO FERRY TRIP
 					</div>
 				)}
+				<p class="ferry-price">
+					<small>Ferry price per trip: <Price price={this.priceOfFerry}></Price></small>
+				</p>
 			</main>
 		);
 	}
