@@ -13,69 +13,30 @@ main {
 	background-color: #fff;
 	color: #212121;
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-
-	:first-child {
-		margin-top: 0;
-	}
 }
 
 h1 {
+	margin-top: 0;
 	font-size: 30px;
 	text-align: center;
 }
 
-.button-container {
-	display: flex;
-	line-height: 30px;
-	max-width: 400px;
-
-	button {
-		flex: 1 0 0;
-		background-color: #b0bec5;
-		border: none;
-		border-radius: 5px;
-		margin: 5px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 40px;
-
-		@media only screen and (max-width: 460px) {
-			font-size: 8vw;
-		}
-
-		&:before {
-			content: "";
-			float: left;
-			padding-top: 133%;
-		}
-	}
+button {
+	background-color: #b0bec5;
+	border: none;
+	border-radius: 5px;
+	margin: 5px;
+	font-size: 20px;
 }
 
-.extra-button-container {
-	display: flex;
-	line-height: 30px;
-	max-width: 400px;
+.reset-button-container{
+	padding: 5px;
+	margin-top: 15px;
 
 	button {
-		background-color: #b0bec5;
-		border: none;
-		border-radius: 5px;
-		margin: 5px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 40px;
-
-		@media only screen and (max-width: 460px) {
-			font-size: 8vw;
-		}
-
-		&:before {
-			content: "";
-			float: left;
-			padding-top: 133%;
-		}
+		margin: 0;
+		height: 40px;
+		width: 100%;
 	}
 }
 
