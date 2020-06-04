@@ -33,7 +33,7 @@ class Moves extends React.Component {
 			case "goose":
 				return <FontAwesomeIcon className="goose" icon={goose} />;
 			case "fox":
-				return <FontAwesomeIcon className="goose" icon={fox} />;
+				return <FontAwesomeIcon className="fox" icon={fox} />;
 			default:
 				return <FontAwesomeIcon className="human" icon={human} />;
 		}
