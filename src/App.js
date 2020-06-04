@@ -10,8 +10,8 @@ class App extends React.Component {
 		bagsOfCorn: 0,
 		geese: 0,
 		total: 0,
-		showError: false
-	}
+		showError: false,
+	};
 
 	onChangeCornQuantity(number) {
 		let bagsOfCorn = this.state.bagsOfCorn + number;
@@ -19,8 +19,12 @@ class App extends React.Component {
 
 		this.setState({
 			bagsOfCorn,
-			total: Transporter.getTotalPrice(this.priceOfFerry, this.state.geese, bagsOfCorn),
-			showError: !Transporter.canTravel(this.state.geese, bagsOfCorn)
+			total: Transporter.getTotalPrice(
+				this.priceOfFerry,
+				this.state.geese,
+				bagsOfCorn
+			),
+			showError: !Transporter.canTravel(this.state.geese, bagsOfCorn),
 		});
 	}
 
@@ -30,8 +34,12 @@ class App extends React.Component {
 
 		this.setState({
 			geese,
-			total: Transporter.getTotalPrice(this.priceOfFerry, geese, this.state.bagsOfCorn),
-			showError: !Transporter.canTravel(geese, this.state.bagsOfCorn)
+			total: Transporter.getTotalPrice(
+				this.priceOfFerry,
+				geese,
+				this.state.bagsOfCorn
+			),
+			showError: !Transporter.canTravel(geese, this.state.bagsOfCorn),
 		});
 	}
 
@@ -46,26 +54,34 @@ class App extends React.Component {
 				<div className="item-picker">
 					<h2>Corn</h2>
 					<p id="bags-of-corn">Bags of corn: {this.state.bagsOfCorn}</p>
-					<button id="corn-plus-one" onClick={() => this.onChangeCornQuantity(1)}>+</button>
-					<button onClick={() => this.onChangeCornQuantity(10)}>+10</button>
-					<button onClick={() => this.onChangeCornQuantity(-10)}>-10</button>
-					<button onClick={() => this.onChangeCornQuantity(-1)}>-</button>
+					<div class="button-container">
+						<button id="corn-plus-one" onClick={() => this.onChangeCornQuantity(1)}>+</button>
+						<button onClick={() => this.onChangeCornQuantity(10)}>+10</button>
+						<button onClick={() => this.onChangeCornQuantity(-10)}>-10</button>
+						<button onClick={() => this.onChangeCornQuantity(-1)}>-</button>
+					</div>
 				</div>
 
 				<div className="item-picker">
 					<h2>Geese</h2>
 					<p id="geese">Geese: {this.state.geese}</p>
-					<button id="goose-plus-one" onClick={() => this.onChangeGeeseQuantity(1)}>+</button>
-					<button onClick={() => this.onChangeGeeseQuantity(10)}>+10</button>
-					<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
-					<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
+					<div class="button-container">
+						<button id="goose-plus-one" onClick={() => this.onChangeGeeseQuantity(1)}>+</button>
+						<button onClick={() => this.onChangeGeeseQuantity(10)}>+10</button>
+						<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
+						<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
+					</div>
 				</div>
 
-				{!this.state.showError && <div id="total">
-					Price for ferry: <Price price={this.state.total}></Price>
-				</div>}
+				{!this.state.showError && (
+					<div id="total">
+						Price for ferry: <Price price={this.state.total}></Price>
+					</div>
+				)}
 
-				{this.state.showError && <div className="error">CANNOT DO FERRY TRIP</div>}
+				{this.state.showError && (
+					<div className="error">CANNOT DO FERRY TRIP</div>
+				)}
 			</main>
 		);
 	}
