@@ -58,15 +58,17 @@ class Moves extends React.Component {
 				</tr>
 			);
 		});
-
-		return (
-			<div>
+		
+		if (this.state.moves.length > 0) {
+            return (<div>
 				<h2>Trips</h2>
 				<table class="trips">
 					<tbody>{items}</tbody>
 				</table>
-			</div>
-		);
+			</div>);
+        } else {
+            return null;
+        }
 	}
 }
 

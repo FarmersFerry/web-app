@@ -52,6 +52,33 @@ h1 {
 	}
 }
 
+.extra-button-container {
+	display: flex;
+	line-height: 30px;
+	max-width: 400px;
+
+	button {
+		background-color: #b0bec5;
+		border: none;
+		border-radius: 5px;
+		margin: 5px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 40px;
+
+		@media only screen and (max-width: 460px) {
+			font-size: 8vw;
+		}
+
+		&:before {
+			content: "";
+			float: left;
+			padding-top: 133%;
+		}
+	}
+}
+
 .error {
 	color: #b71c1c;
 	margin-top: 10px;
