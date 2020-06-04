@@ -56,7 +56,7 @@ class App extends React.Component {
 				<div className="item-picker">
 					<h2>Corn</h2>
 					<p id="bags-of-corn">Bags of corn: {this.state.bagsOfCorn}</p>
-					<div class="button-container">
+					<div className="button-container">
 						<button id="corn-plus-one" onClick={() => this.onChangeCornQuantity(1)}>+</button>
 						<button onClick={() => this.onChangeCornQuantity(10)}>+10</button>
 						<button onClick={() => this.onChangeCornQuantity(-10)}>-10</button>
@@ -67,7 +67,7 @@ class App extends React.Component {
 				<div className="item-picker">
 					<h2>Geese</h2>
 					<p id="geese">Geese: {this.state.geese}</p>
-					<div class="button-container">
+					<div className="button-container">
 						<button id="goose-plus-one" onClick={() => this.onChangeGeeseQuantity(1)}>+</button>
 						<button onClick={() => this.onChangeGeeseQuantity(10)}>+10</button>
 						<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
@@ -75,17 +75,16 @@ class App extends React.Component {
 					</div>
 				</div>
 
-				{this.state.canTravel && (
+				{this.state.canTravel && <>
 					<div id="total">
 						Price for ferry: <Price price={this.state.total}></Price>
 					</div>
-				)}
+					<Moves geese={this.state.geese} corn={this.state.bagsOfCorn}></Moves>
+				</>}
 
 				{!this.state.canTravel && (
 					<div className="error">CANNOT DO FERRY TRIP</div>
 				)}
-
-				<Moves geese={this.state.geese} corn={this.state.bagsOfCorn}></Moves>
 			</main>
 		);
 	}
