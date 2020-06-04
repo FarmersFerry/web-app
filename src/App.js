@@ -12,6 +12,7 @@ class App extends React.Component {
 	state = {
 		bagsOfCorn: 0,
 		geese: 0,
+		foxes: 0,
 		total: 0,
 		canTravel: true,
 	};
@@ -25,7 +26,8 @@ class App extends React.Component {
 			total: tripCalculator.getTotalPrice(
 				this.priceOfFerry,
 				this.state.geese,
-				bagsOfCorn
+				bagsOfCorn,
+				this.state.foxes
 			),
 			canTravel: scarecrow.canTravel(this.state.geese, bagsOfCorn),
 		});
@@ -40,9 +42,26 @@ class App extends React.Component {
 			total: tripCalculator.getTotalPrice(
 				this.priceOfFerry,
 				geese,
-				this.state.bagsOfCorn
+				this.state.bagsOfCorn,
+				this.state.foxes
 			),
 			canTravel: scarecrow.canTravel(geese, this.state.bagsOfCorn),
+		});
+	}
+
+	onChangeFoxQuantity(number) {
+		let foxes = this.state.foxes + number;
+		if (foxes < 0) foxes = 0;
+
+		this.setState({
+			foxes,
+			total: tripCalculator.getTotalPrice(
+				this.priceOfFerry,
+				this.state.geese,
+				this.state.bagsOfCorn,
+				foxes
+			),
+			canTravel: scarecrow.canTravel(this.state.geese, this.state.bagsOfCorn),
 		});
 	}
 
@@ -50,6 +69,7 @@ class App extends React.Component {
 		this.setState({
 			bagsOfCorn: 0,
 			geese: 0,
+			foxes: 0,
 			total: 0,
 			canTravel: true
 		});
@@ -65,7 +85,7 @@ class App extends React.Component {
 
 				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount)=>this.onChangeCornQuantity(amount)} />
 				<ItemPicker name="Geese" quantity={this.state.geese} quantityLabel="Geese" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
-				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="Foxes" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
+				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="Foxes" callback={(amount)=>this.onChangeFoxQuantity(amount)} />
 
 				<div className="reset-button-container">
 					<button onClick={() => this.reset()}>Reset</button>
