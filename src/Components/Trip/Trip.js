@@ -22,8 +22,9 @@ class Moves extends React.Component {
 				return <FontAwesomeIcon icon={faLeaf} />;
 			case "goose":
 				return <FontAwesomeIcon icon={faCrow} />;
-		}
-		return <FontAwesomeIcon icon={faMale} />
+			default:
+				return <FontAwesomeIcon icon={faMale} />
+		}		
 	}
 
 	render() {
@@ -45,7 +46,7 @@ class Moves extends React.Component {
 			items.push(<tr><td>{take}</td><td>{arrow}</td></tr>)
 		});
 
-		if (this.moves.length > 0) {
+		if (items.length > 0) {
             return (<div><h2>Trips</h2><table>
                 <tbody>
                     {items}

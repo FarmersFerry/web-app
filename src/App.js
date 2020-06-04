@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import Price from "./Components/Price/Price";
 import Trip from "./Components/Trip/Trip";
-import scarecrow from "./Services/Scarecrow";
+import scarecrowWithFox from "./Services/ScarecrowWithFox";
 import tripCalculator from "./Services/TripCalculator";
 
 class App extends React.Component {
@@ -11,6 +11,7 @@ class App extends React.Component {
 	state = {
 		bagsOfCorn: 0,
 		geese: 0,
+		foxes: 0,
 		total: 0,
 		canTravel: true,
 	};
@@ -26,7 +27,7 @@ class App extends React.Component {
 				this.state.geese,
 				bagsOfCorn
 			),
-			canTravel: scarecrow.canTravel(this.state.geese, bagsOfCorn),
+			canTravel: scarecrowWithFox.canTravelWithFox(this.state.geese, bagsOfCorn, this.state.foxes),
 		});
 	}
 
@@ -41,7 +42,7 @@ class App extends React.Component {
 				geese,
 				this.state.bagsOfCorn
 			),
-			canTravel: scarecrow.canTravel(geese, this.state.bagsOfCorn),
+			canTravel: scarecrowWithFox.canTravelWithFox(geese, this.state.bagsOfCorn, this.state.foxes),
 		});
 	}
 
