@@ -59,7 +59,6 @@ class Moves extends React.Component {
 				</tr>
 			);
 		});
-<<<<<<< HEAD
 
 		if (items.length > 0) {
             return (<div><h2>Trips</h2><table>
@@ -67,16 +66,6 @@ class Moves extends React.Component {
                     {items}
                 </tbody>
             </table></div>);
-=======
-		
-		if (this.state.moves.length > 0) {
-            return (<div>
-				<h2>Trips</h2>
-				<table class="trips">
-					<tbody>{items}</tbody>
-				</table>
-			</div>);
->>>>>>> fca63cd491bc9ca9eda51847a4f33b7c5ad6e0e0
         } else {
             return null;
         }

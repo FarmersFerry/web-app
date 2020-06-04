@@ -61,7 +61,7 @@ class App extends React.Component {
 				this.state.bagsOfCorn,
 				foxes
 			),
-			canTravel: scarecrow.canTravel(this.state.geese, this.state.bagsOfCorn),
+			canTravel: scarecrowWithFox.canTravelWithFox(this.state.geese, this.state.bagsOfCorn, foxes),
 		});
 	}
 
