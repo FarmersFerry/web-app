@@ -156,3 +156,10 @@ it("buildMoves returns 79 moves when 0 geese and 30 corn and 10 fox", () => {
         expect(moves.length).toBe(79);
     });
 });
+
+it("buildMoves returns 9 moves when 2 geese and 1 corn and 1 fox", () => {
+    act(() => {
+        let moves = moveMaker.buildMoves(2, 1, 1);
+        expect(moves.length).toBe(0);
+    });
+});
