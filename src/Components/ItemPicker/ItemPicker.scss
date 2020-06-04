@@ -1,0 +1,26 @@
+.item-picker{
+	&__button-container {
+		display: flex;
+		line-height: 30px;
+		max-width: 400px;
+
+		button {
+			flex: 1 0 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 40px;
+			height: unset;
+
+			@media only screen and (max-width: 460px) {
+				font-size: 8vw;
+			}
+
+			&:before {
+				content: "";
+				float: left;
+				padding-top: 133%;
+			}
+		}
+	}
+}

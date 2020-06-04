@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import Price from "./Components/Price/Price";
 import Trip from "./Components/Trip/Trip";
+import ItemPicker from "./Components/ItemPicker/ItemPicker";
 import scarecrow from "./Services/Scarecrow";
 import tripCalculator from "./Services/TripCalculator";
 
@@ -62,27 +63,9 @@ class App extends React.Component {
 					Ferry Price: <Price price={25}></Price>
 				</p>
 
-				<div className="item-picker">
-					<h2>Corn</h2>
-					<p id="bags-of-corn">Bags of corn: {this.state.bagsOfCorn}</p>
-					<div className="button-container">
-						<button id="corn-plus-one" onClick={() => this.onChangeCornQuantity(1)}>+</button>
-						<button onClick={() => this.onChangeCornQuantity(10)}>+10</button>
-						<button onClick={() => this.onChangeCornQuantity(-10)}>-10</button>
-						<button onClick={() => this.onChangeCornQuantity(-1)}>-</button>
-					</div>
-				</div>
-
-				<div className="item-picker">
-					<h2>Geese</h2>
-					<p id="geese">Geese: {this.state.geese}</p>
-					<div className="button-container">
-						<button id="goose-plus-one" onClick={() => this.onChangeGeeseQuantity(1)}>+</button>
-						<button onClick={() => this.onChangeGeeseQuantity(10)}>+10</button>
-						<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
-						<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
-					</div>
-				</div>
+				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount)=>this.onChangeCornQuantity(amount)} />
+				<ItemPicker name="Geese" quantity={this.state.geese} quantityLabel="Geese" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
+				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="foxes" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
 
 				<div className="reset-button-container">
 					<button onClick={() => this.reset()}>Reset</button>
