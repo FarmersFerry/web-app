@@ -45,6 +45,15 @@ class App extends React.Component {
 		});
 	}
 
+	reset() {
+		this.setState({
+			bagsOfCorn: 0,
+			geese: 0,
+			total: 0,
+			canTravel: true
+		});
+	}
+
 	render() {
 		return (
 			<main>
@@ -73,6 +82,10 @@ class App extends React.Component {
 						<button onClick={() => this.onChangeGeeseQuantity(-10)}>-10</button>
 						<button onClick={() => this.onChangeGeeseQuantity(-1)}>-</button>
 					</div>
+				</div>
+
+				<div className="extra-button-container">
+					<button onClick={() => this.reset()}>Reset</button>
 				</div>
 
 				{this.state.canTravel && <>

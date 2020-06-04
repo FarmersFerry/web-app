@@ -18,18 +18,22 @@ class Moves extends React.Component {
             }
 
             let take = element.take;
-            if(!take) {
-                take='nothing';
+            if (!take) {
+                take = 'nothing';
             }
 
             items.push(<tr><td>{take}</td><td>{arrow}</td></tr>)
         });
 
-        return (<div><h2>Trips</h2><table>
-            <tbody>
-                {items}
-            </tbody>
-        </table></div>);
+        if (this.moves.length > 0) {
+            return (<div><h2>Trips</h2><table>
+                <tbody>
+                    {items}
+                </tbody>
+            </table></div>);
+        } else {
+            return null;
+        }
     }
 }
 
