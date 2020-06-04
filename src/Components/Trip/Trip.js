@@ -1,6 +1,6 @@
 import React from "react";
 import "./Trip.scss";
-import moveMaker from "../../Services/GooseCornTripBuilder";
+import moveMaker from "../../Services/GooseCornFoxTripBuilder";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faArrowRight as rightArrow,
@@ -17,12 +17,12 @@ class Moves extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { moves: moveMaker.buildMoves(props.geese, props.corn) };
+		this.state = { moves: moveMaker.buildMoves(props.geese, props.corn, props.foxes) };
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
-			moves: moveMaker.buildMoves(nextProps.geese, nextProps.corn),
+			moves: moveMaker.buildMoves(nextProps.geese, nextProps.corn, nextProps.foxes),
 		});
 	}
 

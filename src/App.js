@@ -95,7 +95,7 @@ class App extends React.Component {
 					<div id="total">
 						Price for ferry: <Price price={this.state.total}></Price>
 					</div>
-					<Trip geese={this.state.geese} corn={this.state.bagsOfCorn}></Trip>
+					<Trip geese={this.state.geese} corn={this.state.bagsOfCorn} foxes={this.state.foxes}></Trip>
 				</>}
 
 				{!this.state.canTravel && (
