@@ -20,6 +20,10 @@ const buildMoves = (geese, corn, foxes) => {
         return getCaseTwo(corn, 'corn');
     }
 
+    if (geese === 0 && corn === 0 && foxes > 0) {
+        return getCaseTwo(foxes, 'fox');
+    }
+
     if (geese === 1 && corn === 1 && foxes === 0) {
         return getTwoItemMoves('goose', 'corn');
     }
@@ -30,6 +34,10 @@ const buildMoves = (geese, corn, foxes) => {
 
     if (geese === 0 && corn === 1 && foxes === 1) {
         return getTwoItemMoves('corn', 'fox');
+    }
+
+    if(geese ===0 && corn> 1 && foxes > 1){
+        return getSmashOverTwoThings(corn, 'corn', foxes, 'fox')
     }
 
     return [];
@@ -53,6 +61,24 @@ const getCaseTwo = (numberOfThings, nameOfThings) => {
 
     for (let i = 0; i < numberOfThings; i++) {
         moves.push({ take: nameOfThings, direction: 'away' });
+        moves.push({ take: null, direction: 'home' });
+    }
+
+    moves.pop();
+
+    return moves;
+}
+
+const getSmashOverTwoThings = (numberOfAs, nameOfAs, numberOfBs, nameOfBs) => {
+    const moves = [];
+
+    for (let i = 0; i < numberOfAs; i++) {
+        moves.push({ take: nameOfAs, direction: 'away' });
+        moves.push({ take: null, direction: 'home' });
+    }
+
+    for (let i = 0; i < numberOfBs; i++) {
+        moves.push({ take: nameOfBs, direction: 'away' });
         moves.push({ take: null, direction: 'home' });
     }
 

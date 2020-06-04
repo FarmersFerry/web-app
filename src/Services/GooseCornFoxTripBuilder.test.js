@@ -142,3 +142,17 @@ it("buildMoves returns correct moves when 0 geese and 1 corn and 1 fox", () => {
         expect(moves[2].take).toBe("fox");
     });
 });
+
+it("buildMoves returns 19 moves when 0 geese and 0 corn and 10 fox", () => {
+    act(() => {
+        let moves = moveMaker.buildMoves(0, 0, 10);
+        expect(moves.length).toBe(19);
+    });
+});
+
+it("buildMoves returns 79 moves when 0 geese and 30 corn and 10 fox", () => {
+    act(() => {
+        let moves = moveMaker.buildMoves(0, 30, 10);
+        expect(moves.length).toBe(79);
+    });
+});
