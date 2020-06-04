@@ -37,36 +37,24 @@ class Moves extends React.Component {
 	}
 
 	render() {
-		const items = [];
-
-		this.state.moves.forEach((element) => {
-			let arrow = <FontAwesomeIcon icon={rightArrow} />;
-			if (element.direction === "home") {
-				arrow = <FontAwesomeIcon icon={leftArrow} />;
-			}
-
-			let take = element.take;
-			if (!take) {
-				take = "nothing";
-			}
-
-			take = this.convertItemToIcon(take);
-
-			items.push(
-				<tr>
-					<td>{take}</td>
-					<td>{arrow}</td>
-				</tr>
-			);
-		});
-
 		return (
-			<div>
+			<div className="trips">
 				<h2>Trips</h2>
-				{items.length > 0 && <table className="trips">
-					<tbody>{items}</tbody>
-				</table>}
-				{items.length <= 0 && <p>No trips to be made</p>}
+				<div className="total">
+					{this.state.moves.length > 0 && <small>{this.state.moves.length} total</small>}
+				</div>
+				<div class="trip-list">
+					{this.state.moves.length > 0 && this.state.moves.map((element) => {
+						const arrow = <FontAwesomeIcon icon={element.direction === "home" ? leftArrow : rightArrow} />;
+						const item = this.convertItemToIcon(element.take);
+
+						return <div className="trip">
+							<div class="item">{item}</div>
+							{arrow}
+						</div>
+					})}
+				</div>
+				{this.state.moves.length <= 0 && <p>No trips to be made</p>}
 			</div>
 		);
 	}
