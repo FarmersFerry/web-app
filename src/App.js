@@ -9,17 +9,36 @@ import tripCalculator from "./Services/TripCalculator";
 class App extends React.Component {
 	priceOfFerry = 25;
 
+	eggOrder = ['c', 'c', 'g', 'c', 'g', 'g'];
+
 	state = {
 		bagsOfCorn: 0,
 		geese: 0,
 		foxes: 0,
 		total: 0,
 		canTravel: true,
+		eggPosition: 0
 	};
+
+	checkEgg(item) {
+
+		if (this.eggOrder[this.state.eggPosition] === item) {
+			if (this.state.eggPosition === this.eggOrder.length - 1) {
+				console.log('Egg Found');
+				this.setState({ eggPosition: 0 });
+			}
+
+			this.setState({ eggPosition: this.state.eggPosition + 1 });
+		} else {
+			this.setState({ eggPosition: 0 });
+		}
+	}
 
 	onChangeCornQuantity(number) {
 		let bagsOfCorn = this.state.bagsOfCorn + number;
 		if (bagsOfCorn < 0) bagsOfCorn = 0;
+
+		this.checkEgg('c');
 
 		this.setState({
 			bagsOfCorn,
@@ -37,6 +56,8 @@ class App extends React.Component {
 		let geese = this.state.geese + number;
 		if (geese < 0) geese = 0;
 
+		this.checkEgg('g');
+
 		this.setState({
 			geese,
 			total: tripCalculator.getTotalPrice(
@@ -52,6 +73,8 @@ class App extends React.Component {
 	onChangeFoxQuantity(number) {
 		let foxes = this.state.foxes + number;
 		if (foxes < 0) foxes = 0;
+
+		this.checkEgg('f');
 
 		this.setState({
 			foxes,
@@ -73,6 +96,8 @@ class App extends React.Component {
 			total: 0,
 			canTravel: true
 		});
+
+		this.setState({ eggPosition: 0 });
 	}
 
 	render() {
@@ -83,9 +108,9 @@ class App extends React.Component {
 					Ferry Price: <Price price={this.priceOfFerry}></Price>
 				</p>
 
-				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount)=>this.onChangeCornQuantity(amount)} />
-				<ItemPicker name="Geese" quantity={this.state.geese} quantityLabel="Geese" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
-				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="Foxes" callback={(amount)=>this.onChangeFoxQuantity(amount)} />
+				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount) => this.onChangeCornQuantity(amount)} />
+				<ItemPicker name="Geese" quantity={this.state.geese} quantityLabel="Geese" callback={(amount) => this.onChangeGeeseQuantity(amount)} />
+				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="Foxes" callback={(amount) => this.onChangeFoxQuantity(amount)} />
 
 				<div className="reset-button-container">
 					<button onClick={() => this.reset()}>Reset</button>
