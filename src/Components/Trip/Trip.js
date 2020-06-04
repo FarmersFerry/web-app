@@ -8,6 +8,7 @@ import {
 	faCrow as goose,
 	faMale as human,
 	faSeedling as corn,
+	faDog as fox,
 } from "@fortawesome/free-solid-svg-icons";
 
 class Moves extends React.Component {
@@ -31,6 +32,8 @@ class Moves extends React.Component {
 				return <FontAwesomeIcon className="corn" icon={corn} />;
 			case "goose":
 				return <FontAwesomeIcon className="goose" icon={goose} />;
+			case "fox":
+				return <FontAwesomeIcon className="goose" icon={fox} />;
 			default:
 				return <FontAwesomeIcon className="human" icon={human} />;
 		}
@@ -41,18 +44,27 @@ class Moves extends React.Component {
 			<div className="trips">
 				<h2>Trips</h2>
 				<div className="total">
-					{this.state.moves.length > 0 && <small>{this.state.moves.length} total</small>}
+					{this.state.moves.length > 0 && (
+						<small>{this.state.moves.length} total</small>
+					)}
 				</div>
 				<div class="trip-list">
-					{this.state.moves.length > 0 && this.state.moves.map((element) => {
-						const arrow = <FontAwesomeIcon icon={element.direction === "home" ? leftArrow : rightArrow} />;
-						const item = this.convertItemToIcon(element.take);
+					{this.state.moves.length > 0 &&
+						this.state.moves.map((element) => {
+							const arrow = (
+								<FontAwesomeIcon
+									icon={element.direction === "home" ? leftArrow : rightArrow}
+								/>
+							);
+							const item = this.convertItemToIcon(element.take);
 
-						return <div className="trip">
-							<div class="item">{item}</div>
-							{arrow}
-						</div>
-					})}
+							return (
+								<div className="trip">
+									<div class="item">{item}</div>
+									{arrow}
+								</div>
+							);
+						})}
 				</div>
 				{this.state.moves.length <= 0 && <p>No trips to be made</p>}
 			</div>
