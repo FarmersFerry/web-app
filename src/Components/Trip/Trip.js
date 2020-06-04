@@ -1,31 +1,51 @@
 import React from "react";
 import moveMaker from "../../Services/GooseCornTripBuilder";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight, faArrowLeft, faCrow, faMale, faLeaf } from '@fortawesome/free-solid-svg-icons'
 
 class Moves extends React.Component {
-    moves = [];
+	state = { moves: [] };
 
-    componentWillReceiveProps(nextProps) {
-        this.moves = moveMaker.buildMoves(nextProps.geese, nextProps.corn);
-    }
+	constructor(props) { 
+		super(props);
 
-    render() {
-        const items = []
+		this.state = { moves: moveMaker.buildMoves(props.geese, props.corn) };
+	}
 
-        this.moves.forEach(element => {
-            let arrow = ">";
-            if (element.direction === 'home') {
-                arrow = "<";
-            }
+	componentWillReceiveProps(nextProps) {
+		this.setState({ moves: moveMaker.buildMoves(nextProps.geese, nextProps.corn) });
+	}
 
-            let take = element.take;
-            if (!take) {
-                take = 'nothing';
-            }
+	convertItemToIcon(item) { 
+		switch (item) { 
+			case "corn":
+				return <FontAwesomeIcon icon={faLeaf} />;
+			case "goose":
+				return <FontAwesomeIcon icon={faCrow} />;
+		}
+		return <FontAwesomeIcon icon={faMale} />
+	}
 
-            items.push(<tr><td>{take}</td><td>{arrow}</td></tr>)
-        });
+	render() {
+		const items = []
 
-        if (this.moves.length > 0) {
+		this.state.moves.forEach(element => {
+			let arrow = <FontAwesomeIcon icon={faArrowRight} />;
+			if (element.direction === 'home') {
+				arrow =  <FontAwesomeIcon icon={faArrowLeft} />;
+			}
+
+			let take = element.take;
+			if(!take) {
+				take='nothing';
+			}
+
+			take = this.convertItemToIcon(take);
+
+			items.push(<tr><td>{take}</td><td>{arrow}</td></tr>)
+		});
+
+		if (this.moves.length > 0) {
             return (<div><h2>Trips</h2><table>
                 <tbody>
                     {items}
@@ -34,7 +54,7 @@ class Moves extends React.Component {
         } else {
             return null;
         }
-    }
+	}
 }
 
 export default Moves;
