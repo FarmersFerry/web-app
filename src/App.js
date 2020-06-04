@@ -25,6 +25,7 @@ class App extends React.Component {
 		if (this.eggOrder[this.state.eggPosition] === item) {
 			if (this.state.eggPosition === this.eggOrder.length - 1) {
 				console.log('Egg Found');
+				window.open('https://cdn.shopify.com/s/files/1/0072/8141/0136/products/internet-easter-eggs_SQU_1000x1000.jpg?v=1583509113');
 				this.setState({ eggPosition: 0 });
 			}
 
