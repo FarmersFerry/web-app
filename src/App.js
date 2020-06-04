@@ -60,7 +60,7 @@ class App extends React.Component {
 			<main>
 				<h1>Ferry Trip Calculator</h1>
 				<p>
-					Ferry Price: <Price price={25}></Price>
+					Ferry Price: <Price price={this.priceOfFerry}></Price>
 				</p>
 
 				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount)=>this.onChangeCornQuantity(amount)} />
