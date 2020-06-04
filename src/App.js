@@ -84,7 +84,7 @@ class App extends React.Component {
 					</div>
 				</div>
 
-				<div className="extra-button-container">
+				<div className="reset-button-container">
 					<button onClick={() => this.reset()}>Reset</button>
 				</div>
 
