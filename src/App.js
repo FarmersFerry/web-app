@@ -1,7 +1,9 @@
 import React from "react";
 import "./App.scss";
 import Price from "./Components/Price/Price";
-import Transporter from "./Services/Transporter";
+import Moves from "./Components/Moves/Moves";
+import scarecrow from "./Services/Scarecrow";
+import tripCalculator from "./Services/TripCalculator";
 
 class App extends React.Component {
 	priceOfFerry = 25;
@@ -10,7 +12,7 @@ class App extends React.Component {
 		bagsOfCorn: 0,
 		geese: 0,
 		total: 0,
-		showError: false,
+		canTravel: true,
 	};
 
 	onChangeCornQuantity(number) {
@@ -19,12 +21,12 @@ class App extends React.Component {
 
 		this.setState({
 			bagsOfCorn,
-			total: Transporter.getTotalPrice(
+			total: tripCalculator.getTotalPrice(
 				this.priceOfFerry,
 				this.state.geese,
 				bagsOfCorn
 			),
-			showError: !Transporter.canTravel(this.state.geese, bagsOfCorn),
+			canTravel: scarecrow.canTravel(this.state.geese, bagsOfCorn),
 		});
 	}
 
@@ -34,12 +36,12 @@ class App extends React.Component {
 
 		this.setState({
 			geese,
-			total: Transporter.getTotalPrice(
+			total: tripCalculator.getTotalPrice(
 				this.priceOfFerry,
 				geese,
 				this.state.bagsOfCorn
 			),
-			showError: !Transporter.canTravel(geese, this.state.bagsOfCorn),
+			canTravel: scarecrow.canTravel(geese, this.state.bagsOfCorn),
 		});
 	}
 
@@ -73,15 +75,17 @@ class App extends React.Component {
 					</div>
 				</div>
 
-				{!this.state.showError && (
+				{this.state.canTravel && (
 					<div id="total">
 						Price for ferry: <Price price={this.state.total}></Price>
 					</div>
 				)}
 
-				{this.state.showError && (
+				{!this.state.canTravel && (
 					<div className="error">CANNOT DO FERRY TRIP</div>
 				)}
+
+				<Moves geese={this.state.geese} corn={this.state.bagsOfCorn}></Moves>
 			</main>
 		);
 	}
