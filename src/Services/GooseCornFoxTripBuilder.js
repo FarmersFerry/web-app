@@ -36,7 +36,7 @@ const buildMoves = (geese, corn, foxes) => {
         return getTwoItemMoves('corn', 'fox');
     }
 
-    if(geese ===0 && corn> 1 && foxes > 1){
+    if (geese === 0 && corn > 1 && foxes > 1) {
         return getSmashOverTwoThings(corn, 'corn', foxes, 'fox')
     }
 

@@ -16,6 +16,10 @@ const canTravelWithFox = (geese, corn, foxes) => {
             return true;
         }
     } else {
+        if (foxes === 1 && geese > 1 && corn === 1) {
+            return false;
+        }
+
         if (geese > 1 && corn > 1) {
             return false;
         }
@@ -36,4 +40,12 @@ const canTravelWithFox = (geese, corn, foxes) => {
     return false;
 };
 
-export default { canTravelWithFox };
+const isGooseEaten = (geese, corn, foxes) => {
+    if (foxes >= 1 && geese > 2) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+export default { canTravelWithFox, isGooseEaten };
