@@ -48,9 +48,9 @@ class Moves extends React.Component {
 						<small>{this.state.moves.length} total</small>
 					)}
 				</div>
-				<div class="trip-list">
+				<div className="trip-list">
 					{this.state.moves.length > 0 &&
-						this.state.moves.map((element) => {
+						this.state.moves.map((element, index) => {
 							const arrow = (
 								<FontAwesomeIcon
 									icon={element.direction === "home" ? leftArrow : rightArrow}
@@ -59,8 +59,8 @@ class Moves extends React.Component {
 							const item = this.convertItemToIcon(element.take);
 
 							return (
-								<div className="trip">
-									<div class="item">{item}</div>
+								<div className="trip" key={index}>
+									<div className="item">{item}</div>
 									{arrow}
 								</div>
 							);

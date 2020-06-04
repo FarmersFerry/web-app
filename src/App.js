@@ -118,14 +118,17 @@ class App extends React.Component {
 				</div>
 
 				{this.state.canTravel && <>
-					<div id="total">
+					<div id="total" className="sticky">
 						Price for ferry: <Price price={this.state.total}></Price>
 					</div>
 					<Trip geese={this.state.geese} corn={this.state.bagsOfCorn} foxes={this.state.foxes}></Trip>
 				</>}
 
 				{!this.state.canTravel && (
-					<div className="error">CANNOT DO FERRY TRIP</div>
+					<div className="error sticky">
+						{scarecrowWithFox.isGooseEaten(this.state.geese, this.state.bagsOfCorn, this.state.foxes) && <video autoPlay loop muted src="/web-app/fox.webm"></video>}
+						CANNOT DO FERRY TRIP
+					</div>
 				)}
 			</main>
 		);
