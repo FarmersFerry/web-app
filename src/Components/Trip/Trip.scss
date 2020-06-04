@@ -10,7 +10,7 @@
 	.trip-list {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: space-around;
 
 		// hacks to get row separator line
 		overflow-y: hidden;
