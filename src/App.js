@@ -65,7 +65,7 @@ class App extends React.Component {
 
 				<ItemPicker name="Corn" quantity={this.state.bagsOfCorn} quantityLabel="Bags of corn" callback={(amount)=>this.onChangeCornQuantity(amount)} />
 				<ItemPicker name="Geese" quantity={this.state.geese} quantityLabel="Geese" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
-				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="foxes" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
+				<ItemPicker name="Foxes" quantity={this.state.foxes} quantityLabel="Foxes" callback={(amount)=>this.onChangeGeeseQuantity(amount)} />
 
 				<div className="reset-button-container">
 					<button onClick={() => this.reset()}>Reset</button>
