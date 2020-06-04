@@ -3,11 +3,11 @@ import "./Trip.scss";
 import moveMaker from "../../Services/GooseCornTripBuilder";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-	faArrowRight,
-	faArrowLeft,
-	faCrow,
-	faMale,
-	faLeaf,
+	faArrowRight as rightArrow,
+	faArrowLeft as leftArrow,
+	faCrow as goose,
+	faMale as human,
+	faSeedling as corn,
 } from "@fortawesome/free-solid-svg-icons";
 
 class Moves extends React.Component {
@@ -28,11 +28,11 @@ class Moves extends React.Component {
 	convertItemToIcon(item) {
 		switch (item) {
 			case "corn":
-				return <FontAwesomeIcon className="corn" icon={faLeaf} />;
+				return <FontAwesomeIcon className="corn" icon={corn} />;
 			case "goose":
-				return <FontAwesomeIcon icon={faCrow} />;
+				return <FontAwesomeIcon className="goose" icon={goose} />;
 			default:
-				return <FontAwesomeIcon icon={faMale} />;
+				return <FontAwesomeIcon className="human" icon={human} />;
 		}
 	}
 
@@ -40,9 +40,9 @@ class Moves extends React.Component {
 		const items = [];
 
 		this.state.moves.forEach((element) => {
-			let arrow = <FontAwesomeIcon icon={faArrowRight} />;
+			let arrow = <FontAwesomeIcon icon={rightArrow} />;
 			if (element.direction === "home") {
-				arrow = <FontAwesomeIcon icon={faArrowLeft} />;
+				arrow = <FontAwesomeIcon icon={leftArrow} />;
 			}
 
 			let take = element.take;
@@ -60,18 +60,15 @@ class Moves extends React.Component {
 			);
 		});
 
-		if (items.length > 0) {
-			return (
-				<div>
-					<h2>Trips</h2>
-					<table className="trips">
-						<tbody>{items}</tbody>
-					</table>
-				</div>
-			);
-		} else {
-			return null;
-		}
+		return (
+			<div>
+				<h2>Trips</h2>
+				{items.length > 0 && <table className="trips">
+					<tbody>{items}</tbody>
+				</table>}
+				{items.length <= 0 && <p>No trips to be made</p>}
+			</div>
+		);
 	}
 }
 
