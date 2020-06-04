@@ -4,10 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight, faArrowLeft, faCrow, faMale, faLeaf } from '@fortawesome/free-solid-svg-icons'
 
 class Moves extends React.Component {
-	moves = [];
+	state = { moves: [] };
+
+	constructor(props) { 
+		super(props);
+
+		this.state = { moves: moveMaker.buildMoves(props.geese, props.corn) };
+	}
 
 	componentWillReceiveProps(nextProps) {
-		this.moves = moveMaker.buildMoves(nextProps.geese, nextProps.corn);
+		this.setState({ moves: moveMaker.buildMoves(nextProps.geese, nextProps.corn) });
 	}
 
 	convertItemToIcon(item) { 
@@ -23,7 +29,7 @@ class Moves extends React.Component {
 	render() {
 		const items = []
 
-		this.moves.forEach(element => {
+		this.state.moves.forEach(element => {
 			let arrow = <FontAwesomeIcon icon={faArrowRight} />;
 			if (element.direction === 'home') {
 				arrow =  <FontAwesomeIcon icon={faArrowLeft} />;
