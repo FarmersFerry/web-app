@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.scss";
 import Price from "./Components/Price/Price";
-import Moves from "./Components/Moves/Moves";
+import Trip from "./Components/Trip/Trip";
 import scarecrow from "./Services/Scarecrow";
 import tripCalculator from "./Services/TripCalculator";
 
@@ -69,7 +69,7 @@ class App extends React.Component {
 
 				{!this.state.canTravel && <div className="error">CANNOT DO FERRY TRIP</div>}
 
-				<Moves geese={this.state.geese} corn={this.state.bagsOfCorn}></Moves>
+				<Trip geese={this.state.geese} corn={this.state.bagsOfCorn}></Trip>
 			</main>
 		);
 	}

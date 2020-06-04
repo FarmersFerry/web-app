@@ -1,5 +1,5 @@
 import React from "react";
-import moveMaker from "../../Services/MoveMaker";
+import moveMaker from "../../Services/GooseCornTripBuilder";
 
 class Moves extends React.Component {
     moves = [];
