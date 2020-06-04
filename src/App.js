@@ -99,7 +99,10 @@ class App extends React.Component {
 				</>}
 
 				{!this.state.canTravel && (
-					<div className="error sticky"><video autoPlay loop muted src="/web-app/fox.webm"></video>CANNOT DO FERRY TRIP</div>
+					<div className="error sticky">
+						{scarecrowWithFox.isGooseEaten(this.state.geese, this.state.bagsOfCorn, this.state.foxes) && <video autoPlay loop muted src="/web-app/fox.webm"></video>}
+						CANNOT DO FERRY TRIP
+					</div>
 				)}
 			</main>
 		);
