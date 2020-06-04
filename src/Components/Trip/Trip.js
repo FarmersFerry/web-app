@@ -32,8 +32,8 @@ class Moves extends React.Component {
 			case "goose":
 				return <FontAwesomeIcon icon={faCrow} />;
 			default:
-				return <FontAwesomeIcon icon={faMale} />
-		}		
+				return <FontAwesomeIcon icon={faMale} />;
+		}
 	}
 
 	render() {
@@ -61,14 +61,17 @@ class Moves extends React.Component {
 		});
 
 		if (items.length > 0) {
-            return (<div><h2>Trips</h2><table>
-                <tbody>
-                    {items}
-                </tbody>
-            </table></div>);
-        } else {
-            return null;
-        }
+			return (
+				<div>
+					<h2>Trips</h2>
+					<table className="trips">
+						<tbody>{items}</tbody>
+					</table>
+				</div>
+			);
+		} else {
+			return null;
+		}
 	}
 }
 
